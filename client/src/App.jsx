@@ -9,7 +9,6 @@ function App() {
   return (
     <>
       <Hero />
-      <Why />
       <Benefits />
       <Signup />
     </>
