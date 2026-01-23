@@ -3,10 +3,15 @@ import Input from '../../components/common/Input.jsx'
 import Button from '../../components/common/Button.jsx'
 import './Signup.css'
 import Triangle from '../../assets/icons/signup/Signup_Shape.svg'
+import { signupUser } from '../../services/api.js'
 
 const Signup = () => {
     const signupRef = useRef(null)
     const [isVisible, setIsVisible] = useState(false)
+    const [email, setEmail] = useState('')
+    const [name, setName] = useState('')
+    const [loading, setLoading] = useState(false)
+    const [message, setMessage] = useState('')
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -33,6 +38,32 @@ const Signup = () => {
         }
     }, [])
 
+    const handleSubmit = async (e) => {
+        e?.preventDefault()
+        
+        if (!email) {
+            setMessage('Please enter your email')
+            return
+        }
+
+        // Extract name from email if not provided
+        const userName = name || email.split('@')[0]
+
+        setLoading(true)
+        setMessage('')
+
+        try {
+            await signupUser(userName, email)
+            setMessage('Signup successful! Check your email for the coupon code.')
+            setEmail('')
+            setName('')
+        } catch (error) {
+            setMessage(error.message || 'Signup failed. Please try again.')
+        } finally {
+            setLoading(false)
+        }
+    }
+
     return (
         <div ref={signupRef} className="signup-section">
             <div className='signup-body'>
@@ -43,10 +74,31 @@ const Signup = () => {
                     See why millions of people across 195 countries use TaskMan.
                 </p>
 
-                <div className='email-section'>
-                    <Input inputName="Name@company.com" style='hero-input' />
-                    <Button ButtonName="Try for free" className="hero-button-body" onClick={() => { }} />
-                </div>
+                <form className='email-section' onSubmit={handleSubmit}>
+                    <Input 
+                        inputName="Name@company.com" 
+                        style='hero-input'
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                    <Button 
+                        ButtonName={loading ? "Signing up..." : "Try for free"} 
+                        className="hero-button-body" 
+                        onClick={handleSubmit}
+                        type="submit"
+                        disabled={loading}
+                    />
+                </form>
+                {message && (
+                    <p style={{ 
+                        marginTop: '10px', 
+                        color: message.includes('successful') ? 'green' : 'red',
+                        fontSize: '14px'
+                    }}>
+                        {message}
+                    </p>
+                )}
             </div>
             <div className="triangle-container">
                 <img

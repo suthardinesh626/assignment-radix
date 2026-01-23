@@ -88,8 +88,8 @@ const Hero = () => {
                             There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour.
                         </p>
                         <div className='email-section'>
-                            <Input inputName="Name@company.com" style='hero-input' />
-                            <Button ButtonName="Try for free" className="hero-button-body" onClick={() => { }} />
+                            <Input inputName="Name@company.com" style='hero-input' type="email" />
+                            <Button ButtonName="Try for free" className="hero-button-body" type="submit" onClick={() => {}} />
                         </div>
                     </div>
 
