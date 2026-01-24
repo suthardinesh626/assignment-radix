@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import './Hero.css'
 import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Button from '../../components/common/Button.jsx'
 import Input from '../../components/common/Input.jsx'
 //Hero Cards
@@ -37,8 +38,15 @@ const Hero = () => {
     const [message, setMessage] = useState('')
 
     useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger)
         const ctx = gsap.context(() => {
-            const tl = gsap.timeline()
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: heroRef.current,
+                    start: 'top 80%',
+                    toggleActions: 'play none none none',
+                }
+            })
 
             // Circles: blue -> yellow -> gray entering from the right
             tl.from(shapeRefs.current, {

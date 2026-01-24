@@ -17,7 +17,7 @@ const Benefits = () => {
                 scrollTrigger: {
                     trigger: cardsRef.current[0], // Trigger when the first card comes into view (or the container)
                     start: 'top 80%', // Start animation when top of element hits 80% of viewport
-                    toggleActions: 'play none none reverse',
+                    toggleActions: 'play none none none',
                 },
                 y: 50,
                 opacity: 0,
