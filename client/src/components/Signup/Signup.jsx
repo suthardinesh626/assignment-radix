@@ -40,7 +40,7 @@ const Signup = () => {
 
     const handleSubmit = async (e) => {
         e?.preventDefault()
-        
+
         if (!email) {
             setMessage('Please enter your email')
             return
@@ -75,24 +75,24 @@ const Signup = () => {
                 </p>
 
                 <form className='email-section' onSubmit={handleSubmit}>
-                    <Input 
-                        inputName="Name@company.com" 
+                    <Input
+                        inputName="Name@company.com"
                         style='hero-input'
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
-                    <Button 
-                        ButtonName={loading ? "Signing up..." : "Try for free"} 
-                        className="hero-button-body" 
+                    <Button
+                        ButtonName={loading ? "Signing up..." : "Try for free"}
+                        className="hero-button-body"
                         onClick={handleSubmit}
                         type="submit"
                         disabled={loading}
                     />
                 </form>
                 {message && (
-                    <p style={{ 
-                        marginTop: '10px', 
+                    <p style={{
+                        marginTop: '10px',
                         color: message.includes('successful') ? 'green' : 'red',
                         fontSize: '14px'
                     }}>

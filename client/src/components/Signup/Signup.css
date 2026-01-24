@@ -3,7 +3,7 @@
     overflow: hidden;
     margin: 0;
     padding: 0;
-
+    height: 630px;
 }
 
 
@@ -36,7 +36,7 @@
 
 .email-section {
     display: flex;
-    gap: 20px;
+    gap: 10px;
 }
 
 .triangle-container {
@@ -60,4 +60,190 @@
 
 .triangle-svg.visible {
     transform: rotateY(180deg);
+}
+
+.hero-input{
+    padding: 0px 10px;
+}
+
+/* Responsive design for all screen sizes */
+
+/* Large screens to tablets */
+@media (max-width: 1200px) {
+    .signup-title {
+        font-size: 45px;
+    }
+
+    .signup-subtitle {
+        font-size: 24px;
+    }
+
+    .triangle-svg {
+        width: 160px;
+        height: 580px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .signup-title {
+        font-size: 42px;
+    }
+
+    .signup-subtitle {
+        font-size: 22px;
+    }
+
+    .triangle-container {
+        right: -150px;
+    }
+
+    .triangle-svg {
+        width: 140px;
+        height: 510px;
+    }
+}
+
+@media (max-width: 900px) {
+    .signup-title {
+        font-size: 38px;
+    }
+
+    .signup-subtitle {
+        font-size: 20px;
+    }
+
+    .triangle-container {
+        right: -130px;
+    }
+
+    .triangle-svg {
+        width: 120px;
+        height: 440px;
+    }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+    .signup-title {
+        font-size: 34px;
+        text-align: center;
+        padding: 0 20px;
+    }
+
+    .signup-subtitle {
+        font-size: 18px;
+        text-align: center;
+        padding: 0 20px;
+    }
+
+    .email-section {
+        flex-direction: column;
+        gap: 15px;
+        padding: 0 20px;
+    }
+
+    .triangle-container {
+        right: -110px;
+    }
+
+    .triangle-svg {
+        width: 100px;
+        height: 370px;
+    }
+}
+
+/* Mobile landscape */
+@media (max-width: 640px) {
+    .signup-body {
+        min-height: 500px;
+    }
+
+    .signup-title {
+        font-size: 30px;
+    }
+
+    .signup-subtitle {
+        font-size: 16px;
+    }
+
+    .triangle-container {
+        right: -100px;
+    }
+
+    .triangle-svg {
+        width: 85px;
+        height: 310px;
+    }
+}
+
+/* Mobile portrait */
+@media (max-width: 480px) {
+    .signup-body {
+        min-height: 450px;
+        padding: 20px 10px;
+    }
+
+    .signup-title {
+        font-size: 26px;
+        line-height: 1.2;
+    }
+
+    .signup-subtitle {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+
+    .email-section {
+        width: 100%;
+        gap: 12px;
+    }
+
+    .triangle-container {
+        right: -90px;
+    }
+
+    .triangle-svg {
+        width: 70px;
+        height: 255px;
+    }
+}
+
+/* Small mobile */
+@media (max-width: 375px) {
+    .signup-title {
+        font-size: 22px;
+    }
+
+    .signup-subtitle {
+        font-size: 13px;
+    }
+
+    .triangle-container {
+        right: -80px;
+    }
+
+    .triangle-svg {
+        width: 60px;
+        height: 220px;
+    }
+}
+
+/* Extra small mobile */
+@media (max-width: 320px) {
+    .signup-title {
+        font-size: 20px;
+    }
+
+    .signup-subtitle {
+        font-size: 12px;
+    }
+
+    .triangle-container {
+        right: -70px;
+    }
+
+    .triangle-svg {
+        width: 50px;
+        height: 180px;
+    }
 }

@@ -89,7 +89,7 @@ const Hero = () => {
                         </p>
                         <div className='email-section'>
                             <Input inputName="Name@company.com" style='hero-input' type="email" />
-                            <Button ButtonName="Try for free" className="hero-button-body" type="submit" onClick={() => {}} />
+                            <Button ButtonName="Try for free" className="hero-button-body" type="submit" onClick={() => { }} />
                         </div>
                     </div>
 
