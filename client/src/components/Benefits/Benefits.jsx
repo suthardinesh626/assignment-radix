@@ -15,8 +15,8 @@ const Benefits = () => {
         const ctx = gsap.context(() => {
             gsap.from(cardsRef.current, {
                 scrollTrigger: {
-                    trigger: cardsRef.current[0], // Trigger when the first card comes into view (or the container)
-                    start: 'top 80%', // Start animation when top of element hits 80% of viewport
+                    trigger: cardsRef.current[0],
+                    start: 'top 80%',
                     toggleActions: 'play none none none',
                 },
                 y: 50,

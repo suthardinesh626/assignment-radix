@@ -7,12 +7,9 @@ if (!cached) {
 }
 
 export const connectDB = async () => {
-  // If already connected, return the existing connection
   if (cached.conn) {
     return cached.conn;
   }
-
-  // If connection is in progress, wait for it
   if (!cached.promise) {
     const opts = {
       bufferCommands: false,

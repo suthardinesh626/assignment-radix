@@ -8,21 +8,16 @@ dotenv.config();
 
 const app = express();
 
-// Configure CORS with explicit options
 app.use(cors({
-  origin: "*", // Allow all origins (you can restrict this to specific origins in production)
+  origin: "*",
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
 app.use(express.json());
-
-// Health check route (no DB connection needed)
 app.get("/", (req, res) => {
   res.status(200).send("OK");
 });
-
-// Middleware to ensure database connection before processing API requests
 const ensureDBConnection = async (req, res, next) => {
   try {
     await connectDB();
