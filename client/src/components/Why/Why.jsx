@@ -77,9 +77,47 @@ const Why = () => {
         if (el && !cardRefs.current.includes(el)) cardRefs.current.push(el);
     };
 
+    const handleMouseMove = (e) => {
+        const { clientX, clientY, currentTarget } = e;
+        const { left, top, width, height } = currentTarget.getBoundingClientRect();
+
+        // Calculate relative position (-1 to 1)
+        const xPos = (clientX - left - width / 2) / (width / 2);
+        const yPos = (clientY - top - height / 2) / (height / 2);
+
+        // Move shapes 
+        gsap.to(shapeRefs.current, {
+            x: xPos * 20,
+            y: yPos * 20,
+            duration: 0.5,
+            ease: 'power1.out',
+            overwrite: 'auto'
+        });
+
+        // Move cards
+        gsap.to(cardRefs.current, {
+            x: xPos * 30,
+            y: yPos * 30,
+            duration: 0.5,
+            ease: 'power1.out',
+            overwrite: 'auto'
+        });
+    }
+
+    const handleMouseLeave = () => {
+        // Reset positions
+        gsap.to([...shapeRefs.current, ...cardRefs.current], {
+            x: 0,
+            y: 0,
+            duration: 0.8,
+            ease: 'power3.out',
+            overwrite: 'auto'
+        });
+    }
+
     return (
         <div className='why-container' ref={containerRef}>
-            <div className='why-left'>
+            <div className='why-left' onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
                 <div className='why-shapes'>
                     <img src={Ellipse} alt="" className='why-shape why-shape-ellipse' ref={addToShapeRefs} />
                     <img src={Rectangle} alt="" className='why-shape why-shape-rectangle' ref={addToShapeRefs} />

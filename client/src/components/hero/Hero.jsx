@@ -17,11 +17,9 @@ import ShapeGray from '../../assets/icons/hero/Hero_Shapes_3.svg'
 import CartoonNetwork from '../../assets/icons/logos/Cartoon_Network_logo.svg'
 import BookingCom from '../../assets/icons/logos/Booking.com_logo.svg'
 import Dropbox from '../../assets/icons/logos/Dropbox_logo.svg'
-
 import Toshiba from '../../assets/icons/logos/Toshiba_logo.svg'
 import Slack from '../../assets/icons/logos/Slack_logo.svg'
 import Netflix from '../../assets/icons/logos/Netflix_logo.svg'
-
 import Spotify from '../../assets/icons/logos/Spotify_logo.svg'
 import CocaCola from '../../assets/icons/logos/CocaCola_logo.svg'
 import RedBull from '../../assets/icons/logos/RedBull_logo.svg'
@@ -31,8 +29,6 @@ const Hero = () => {
     const heroRef = useRef(null)
     const shapeRefs = useRef([])
     const cardRefs = useRef([])
-
-    // Signup form state
     const [email, setEmail] = useState('')
     const [loading, setLoading] = useState(false)
     const [message, setMessage] = useState('')
@@ -89,10 +85,7 @@ const Hero = () => {
             setMessage('Please enter your email')
             return
         }
-
-        // Extract name from email if not provided
         const userName = email.split('@')[0]
-
         setLoading(true)
         setMessage('')
 
@@ -107,6 +100,76 @@ const Hero = () => {
         }
     }
 
+    const logoRefs = useRef([])
+
+    const setLogoRef = (index) => (el) => {
+        logoRefs.current[index] = el
+    }
+
+    const handleMouseMove = (e) => {
+        const { clientX, clientY, currentTarget } = e
+        const { left, top, width, height } = currentTarget.getBoundingClientRect()
+
+        // Calculate relative position (-1 to 1)
+        const xPos = (clientX - left - width / 2) / (width / 2)
+        const yPos = (clientY - top - height / 2) / (height / 2)
+
+        // Move shapes (background) - slower movement
+        gsap.to(shapeRefs.current, {
+            x: xPos * 20,
+            y: yPos * 20,
+            duration: 0.5,
+            ease: 'power1.out',
+            overwrite: 'auto'
+        })
+
+        // Move cards (foreground) - slightly faster for depth
+        gsap.to(cardRefs.current, {
+            x: xPos * 30,
+            y: yPos * 30,
+            duration: 0.5,
+            ease: 'power1.out',
+            overwrite: 'auto'
+        })
+    }
+
+    const handleMouseLeave = () => {
+        // Reset positions
+        gsap.to([...shapeRefs.current, ...cardRefs.current], {
+            x: 0,
+            y: 0,
+            duration: 0.8,
+            ease: 'power3.out',
+            overwrite: 'auto'
+        })
+    }
+
+    const handleLogosMouseMove = (e) => {
+        const { clientX, clientY, currentTarget } = e
+        const { left, top, width, height } = currentTarget.getBoundingClientRect()
+
+        const xPos = (clientX - left - width / 2) / (width / 2)
+        const yPos = (clientY - top - height / 2) / (height / 2)
+
+        gsap.to(logoRefs.current, {
+            x: xPos * 15,
+            y: yPos * 15,
+            duration: 0.5,
+            ease: 'power1.out',
+            overwrite: 'auto'
+        })
+    }
+
+    const handleLogosMouseLeave = () => {
+        gsap.to(logoRefs.current, {
+            x: 0,
+            y: 0,
+            duration: 0.8,
+            ease: 'power3.out',
+            overwrite: 'auto'
+        })
+    }
+
     return (
         <div className='hero-body' ref={heroRef}>
             <div className='hero-navbar'>
@@ -115,7 +178,7 @@ const Hero = () => {
             </div>
 
             <div className="hero-main">
-                <div className='hero-left'>
+                <div className='hero-left' onMouseMove={handleLogosMouseMove} onMouseLeave={handleLogosMouseLeave}>
                     <div className='hero-content'>
                         <h4 className='task-title'>
                             Task Management
@@ -155,21 +218,21 @@ const Hero = () => {
                     </div>
 
                     <div className="hero-logos">
-                        <img src={CartoonNetwork} alt="Cartoon Network" />
-                        <img src={BookingCom} alt="Booking.com" />
-                        <img src={Dropbox} alt="Dropbox" />
+                        <img src={CartoonNetwork} alt="Cartoon Network" ref={setLogoRef(0)} />
+                        <img src={BookingCom} alt="Booking.com" ref={setLogoRef(1)} />
+                        <img src={Dropbox} alt="Dropbox" ref={setLogoRef(2)} />
 
-                        <img src={Toshiba} alt="Toshiba" />
-                        <img src={Slack} alt="Slack" />
-                        <img src={Netflix} alt="Netflix" />
+                        <img src={Toshiba} alt="Toshiba" ref={setLogoRef(3)} />
+                        <img src={Slack} alt="Slack" ref={setLogoRef(4)} />
+                        <img src={Netflix} alt="Netflix" ref={setLogoRef(5)} />
 
-                        <img src={Spotify} alt="Spotify" />
-                        <img src={CocaCola} alt="Coca Cola" />
-                        <img src={RedBull} alt="Red Bull" className="logo-redbull" />
+                        <img src={Spotify} alt="Spotify" ref={setLogoRef(6)} />
+                        <img src={CocaCola} alt="Coca Cola" ref={setLogoRef(7)} />
+                        <img src={RedBull} alt="Red Bull" className="logo-redbull" ref={setLogoRef(8)} />
                     </div>
                 </div>
 
-                <div className="hero-right">
+                <div className="hero-right" onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
                     <div className="hero-shapes">
                         <img
                             src={ShapeBlue}

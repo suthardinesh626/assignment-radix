@@ -54,8 +54,34 @@ const Benefits = () => {
         }
     ];
 
+    const handleMouseMove = (e) => {
+        const { clientX, clientY, currentTarget } = e;
+        const { left, top, width, height } = currentTarget.getBoundingClientRect();
+
+        const xPos = (clientX - left - width / 2) / (width / 2);
+        const yPos = (clientY - top - height / 2) / (height / 2);
+
+        gsap.to(cardsRef.current, {
+            x: xPos * 20,
+            y: yPos * 20,
+            duration: 0.5,
+            ease: 'power1.out',
+            overwrite: 'auto'
+        });
+    };
+
+    const handleMouseLeave = () => {
+        gsap.to(cardsRef.current, {
+            x: 0,
+            y: 0,
+            duration: 0.8,
+            ease: 'power3.out',
+            overwrite: 'auto'
+        });
+    };
+
     return (
-        <div className='benefits-container'>
+        <div className='benefits-container' onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
             <div className='benefits-title'>
                 <h3 className='benefits-title-text' >Key benefits of using task management software</h3>
             </div>
