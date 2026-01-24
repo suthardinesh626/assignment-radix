@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './Hero.css'
 import { gsap } from 'gsap'
 import Button from '../../components/common/Button.jsx'
@@ -24,11 +24,17 @@ import Netflix from '../../assets/icons/logos/Netflix_logo.svg'
 import Spotify from '../../assets/icons/logos/Spotify_logo.svg'
 import CocaCola from '../../assets/icons/logos/CocaCola_logo.svg'
 import RedBull from '../../assets/icons/logos/RedBull_logo.svg'
+import { signupUser } from '../../services/api.js'
 
 const Hero = () => {
     const heroRef = useRef(null)
     const shapeRefs = useRef([])
     const cardRefs = useRef([])
+
+    // Signup form state
+    const [email, setEmail] = useState('')
+    const [loading, setLoading] = useState(false)
+    const [message, setMessage] = useState('')
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -68,6 +74,31 @@ const Hero = () => {
         cardRefs.current[index] = el
     }
 
+    const handleSubmit = async (e) => {
+        e?.preventDefault()
+
+        if (!email) {
+            setMessage('Please enter your email')
+            return
+        }
+
+        // Extract name from email if not provided
+        const userName = email.split('@')[0]
+
+        setLoading(true)
+        setMessage('')
+
+        try {
+            await signupUser(userName, email)
+            setMessage('Signup successful! Check your email for the coupon code.')
+            setEmail('')
+        } catch (error) {
+            setMessage(error.message || 'Signup failed. Please try again.')
+        } finally {
+            setLoading(false)
+        }
+    }
+
     return (
         <div className='hero-body' ref={heroRef}>
             <div className='hero-navbar'>
@@ -87,10 +118,32 @@ const Hero = () => {
                         <p className='task-subtitle'>
                             There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour.
                         </p>
-                        <div className='email-section'>
-                            <Input inputName="Name@company.com" style='hero-input' type="email" />
-                            <Button ButtonName="Try for free" className="hero-button-body" type="submit" onClick={() => { }} />
-                        </div>
+                        <form className='email-section' onSubmit={handleSubmit}>
+                            <Input
+                                inputName="Name@company.com"
+                                style='hero-input'
+                                type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                            <Button
+                                ButtonName={loading ? "Signing up..." : "Try for free"}
+                                className="hero-button-body"
+                                type="submit"
+                                onClick={handleSubmit}
+                                disabled={loading}
+                            />
+                        </form>
+                        {message && (
+                            <p style={{
+                                marginTop: '10px',
+                                color: message.includes('successful') ? 'green' : 'red',
+                                fontSize: '14px',
+                                textAlign: 'center'
+                            }}>
+                                {message}
+                            </p>
+                        )}
                     </div>
 
                     <div className="hero-logos">
