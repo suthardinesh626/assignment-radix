@@ -157,7 +157,7 @@ const Hero = () => {
 
                         <img src={Spotify} alt="Spotify" />
                         <img src={CocaCola} alt="Coca Cola" />
-                        <img src={RedBull} alt="Red Bull" />
+                        <img src={RedBull} alt="Red Bull" className="logo-redbull" />
                     </div>
                 </div>
 

@@ -1,4 +1,3 @@
-/* Hero layout */
 .hero-body {
     width: 100%;
     margin: 0;
@@ -15,28 +14,22 @@
     padding: 0;
     width: 100%;
     height: 100%;
-    /* background: yellow; */
 }
 
 .hero-left {
     flex: 1 1 50%;
-    /* background-color: red; */
     height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* overflow: hidden; */
 }
 
 .hero-right {
     flex: 1 1 50%;
-    /* position: ablsolute; */
     height: 100%;
     width: 100%;
-    /* background-color: black; */
-    /* overflow-x: hidden; */
 }
 
 .hero-title {
@@ -47,8 +40,6 @@
 
 .hero-button-nav {
     font-family: Poppins;
-    /* padding: 10px 20px; */
-    /* font-weight: 100; */
     color: white;
     background: transparent;
     border: 2px solid #FFFFFF;
@@ -115,7 +106,6 @@
     border: 0px;
     opacity: 1;
     width: 200px;
-    /* Keep base width, potentially allow shrink/grow or media query adjust */
     height: 77px;
     display: flex;
     justify-content: center;
@@ -142,76 +132,57 @@
     column-gap: 80px;
     align-items: center;
     justify-items: center;
+    z-index: 5;
 }
 
-/* LOGO STYLE */
 .hero-logos img {
-    max-width: 200px;
-    width: 100%;
-    height: auto;
-
+    width: auto;
+    max-width: 100%;
+    max-height: 60px;
+    object-fit: contain;
     filter: grayscale(100%);
     opacity: 0.6;
-
     transition: filter 0.3s ease, opacity 0.3s ease;
     cursor: pointer;
 }
 
-/* HOVER = REAL COLOR */
 .hero-logos img:hover {
     filter: grayscale(0%);
     opacity: 1;
 }
 
-/* Right-side shapes and cards */
+.hero-logos img.logo-redbull {
+    filter: none;
+    opacity: 1;
+}
+
 .hero-shapes {
     position: absolute;
-    /* Important */
-    /* bottom : 0; */
     right: 0;
     top: 0px;
     width: 50%;
     height: 100%;
-    /* pointer-events: none; */
-    /* background: red; */
     overflow: hidden;
 }
 
 .hero-shape {
     position: absolute;
     bottom: 0;
-    /* anchor to bottom */
     right: -290px;
-    /* top: 0px; */
-    /* anchor to right */
-    /* max-width: none; */
     z-index: 1;
     zoom: 2;
-    /* background: #000; */
-
 }
 
 
 .hero-shape--blue {
-    /* top: 0px; */
-    /* right: 0%; */
-    /* z-index: -1; */
     width: 600px;
 }
 
 .hero-shape--yellow {
-    /* top: 0px;  */
-    /* right: 0%; */
-    /* z-index: 0; */
-    /* transform: scale(0.8); */
     width: 520px;
 }
 
 .hero-shape--gray {
-    /* top: 0px; */
-    /* right: 0%; */
-    /* z-index: 1; */
-    /* zoom: 0.2; */
     width: 440px;
 }
 
@@ -219,10 +190,7 @@
 .hero-cards {
     position: relative;
     z-index: 5;
-    /* above shapes */
     height: 500px;
-    /* width: 730px; */
-    /* background-color: #0634FF; */
     zoom: 1.1;
 
 }
@@ -238,7 +206,6 @@
     right: 30%;
     z-index: 5;
     width: 330px;
-    /* background-color: yellowgreen; */
 }
 
 .hero-card--2 {
@@ -246,8 +213,6 @@
     right: 18%;
     z-index: 4;
     width: 530px;
-    /* max-width: 750px; */
-    /* background-color: green; */
     zoom: 1;
 }
 
@@ -257,7 +222,6 @@
     z-index: 2;
     width: 340px;
     bottom: 0px;
-    /* background-color: blue; */
 }
 
 .hero-card--4 {
@@ -265,14 +229,12 @@
     right: 20%;
     z-index: 3;
     width: 330px;
-    /* background-color: pink; */
 }
 
 @media (max-width: 900px) {
     .hero-main {
         flex-direction: column;
         align-items: center;
-        /* Center content when stacked */
     }
 
     .hero-left {
@@ -281,7 +243,6 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        /* Center text in mobile view */
         text-align: center;
     }
 
@@ -296,62 +257,42 @@
         text-align: center;
         width: 100%;
         font-size: 50px;
-        /* Smaller font on tablet */
         line-height: 1.2;
     }
 
     .task-subtitle {
         text-align: center;
         width: 100%;
-        /* Ensure it takes full width */
     }
 
-    /* 
-    .hero-right {
-        display: none;
-    } */
 
     .hero-logos {
         margin: 48px auto 0;
-        /* Center logos */
         column-gap: 40px;
     }
 
 
     .hero-card--1 {
-        /* top: -80px; */
-        /* right: 40px; */
         z-index: 5;
         width: 330px;
-        /* background-color: yellowgreen; */
         zoom: 0.7;
     }
 
     .hero-card--2 {
-        /* top: 80px; */
-        /* right: -80px; */
         z-index: 4;
         width: 330px;
-        /* max-width: 750px; */
-        /* background-color: green; */
         zoom: 0.7;
     }
 
     .hero-card--3 {
-        /* top: 270px; */
-        /* right: 110px; */
         z-index: 2;
         width: 330px;
-        /* background-color: blue; */
         zoom: 0.7;
     }
 
     .hero-card--4 {
-        /* bottom: -340px; */
-        /* right: -120px; */
         z-index: 3;
         width: 330px;
-        /* background-color: pink; */
         zoom: 0.7;
     }
 
@@ -382,8 +323,6 @@
 
     .hero-navbar {
         padding: 0 10px;
-        /* flex-direction: column; Optional: stack logo and button if really narrow */
-        /* gap: 20px; */
     }
 
     .task-title {
@@ -424,9 +363,10 @@
 
 @media (max-width: 1247px) {
 
-    .hero-shape{
+    .hero-shape {
         zoom: 1.8;
     }
+
     .task-title {
         font-size: 40px;
         padding: 0;
@@ -521,13 +461,13 @@
 }
 
 @media (max-width: 536px) {
-    .hero-shapes{
+    .hero-shapes {
         zoom: 0.8;
     }
-}   
+}
 
 @media (max-width: 417px) {
-    .hero-shapes{
+    .hero-shapes {
         zoom: 0.6;
     }
 }

@@ -66,9 +66,7 @@
     padding: 0px 10px;
 }
 
-/* Responsive design for all screen sizes */
 
-/* Large screens to tablets */
 @media (max-width: 1200px) {
     .signup-section {
         height: 510px;
@@ -128,7 +126,6 @@
     }
 }
 
-/* Tablets */
 @media (max-width: 768px) {
     .signup-section {
         height: 400px;
@@ -162,7 +159,6 @@
     }
 }
 
-/* Mobile landscape */
 @media (max-width: 640px) {
     .signup-body {
         min-height: 500px;
@@ -187,7 +183,6 @@
     }
 }
 
-/* Mobile portrait */
 @media (max-width: 480px) {
     .signup-section {
         height: 400px;
@@ -224,7 +219,6 @@
     }
 }
 
-/* Small mobile */
 @media (max-width: 375px) {
     .signup-title {
         font-size: 22px;
@@ -247,7 +241,6 @@
     }
 }
 
-/* Extra small mobile */
 @media (max-width: 320px) {
     .signup-title {
         font-size: 20px;
