@@ -136,6 +136,8 @@
 }
 
 .hero-logos img {
+    /* margin: 0px 10px; */
+    padding: 0px 10px;
     width: auto;
     max-width: 100%;
     max-height: 60px;
@@ -400,7 +402,7 @@
 
 @media (max-width: 1121px) {
     .hero-shape {
-        top: -130px;
+        /* top: -130px; */
         zoom: 1.5;
     }
 
