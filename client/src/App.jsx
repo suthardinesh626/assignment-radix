@@ -7,12 +7,12 @@ import Signup from './components/Signup/Signup.jsx'
 function App() {
 
   return (
-    <>
+    <div className='main-body' >
       <Hero />
       <Benefits />
       <Why />
       <Signup />
-    </>
+    </div>
   )
 }
 

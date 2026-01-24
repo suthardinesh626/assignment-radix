@@ -1,5 +1,8 @@
 :root {
   background-color: white;
   font: normal normal bold 50px/60px Rubik;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 

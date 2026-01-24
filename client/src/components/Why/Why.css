@@ -67,7 +67,7 @@
 /* Specific shape positioning tweaks based on visual */
 .why-shape-rectangle {
     top: 0;
-    left: -25 0px;
+    left: -248px;
     width: 650px;
     /* Make it large enough to span */
 }
@@ -188,7 +188,7 @@
     .why-left {
         width: 100%;
         height: 800px;
-
+        zoom: 0.9;
     }
 
     .why-right {
@@ -199,8 +199,8 @@
     }
 
     .why-shape-rectangle {
-        left: -50px;
-        width: 100%;
+        left: -250px;
+        /* width: 100%; */
     }
 
     .why-cards {
@@ -208,6 +208,7 @@
         width: 100%;
         height: 100%;
         z-index: 2;
+        zoom: 1.3;
     }
 
     .why-card {
@@ -229,5 +230,37 @@
         left: 180px;
         width: 450px;
         z-index: 4;
+    }
+}
+
+@media (max-width: 400px) {
+    .why-left {
+        width: 100%;
+        height: 800px;
+        zoom: 0.6;
+    }
+
+    .why-card {
+        zoom: 0.9;
+    }
+
+
+}
+
+@media (max-width: 612px) {
+    .why-left {
+        width: 100%;
+        height: 800px;
+        zoom: 0.5;
+    }
+
+    .why-card {
+        zoom: 0.9;
+    }
+}
+
+@media (max-width: 415px) {
+    .why-card {
+        zoom: 1;
     }
 }

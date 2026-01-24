@@ -4,11 +4,12 @@
     margin: 0;
     padding: 0;
     height: 630px;
+    /* background-color: #f5f5f5; */
 }
 
 
 .signup-body {
-    min-height: 640px;
+    max-height: 640px;
     width: 100%;
     height: 100%;
     display: flex;
@@ -70,6 +71,9 @@
 
 /* Large screens to tablets */
 @media (max-width: 1200px) {
+    .signup-section {
+        height: 510px;
+    }
     .signup-title {
         font-size: 45px;
     }
@@ -104,6 +108,9 @@
 }
 
 @media (max-width: 900px) {
+    .signup-section {
+        height: 400px;
+    }
     .signup-title {
         font-size: 38px;
     }
@@ -124,6 +131,9 @@
 
 /* Tablets */
 @media (max-width: 768px) {
+    .signup-section {
+        height: 400px;
+    }
     .signup-title {
         font-size: 34px;
         text-align: center;
@@ -144,6 +154,7 @@
 
     .triangle-container {
         right: -110px;
+        height: 330px;
     }
 
     .triangle-svg {
@@ -168,16 +179,22 @@
 
     .triangle-container {
         right: -100px;
+        height: 280px;
     }
 
     .triangle-svg {
         width: 85px;
-        height: 310px;
+        height: 380px;
     }
 }
 
 /* Mobile portrait */
 @media (max-width: 480px) {
+    .signup-section {
+        height: 400px;
+        background: #000;
+    }
+
     .signup-body {
         min-height: 450px;
         padding: 20px 10px;
@@ -200,11 +217,12 @@
 
     .triangle-container {
         right: -90px;
+        height: 400px;
     }
 
     .triangle-svg {
         width: 70px;
-        height: 255px;
+        height: 550px;
     }
 }
 
@@ -226,6 +244,9 @@
         width: 60px;
         height: 220px;
     }
+    .signup-body{
+        height: 400px;
+    }
 }
 
 /* Extra small mobile */
@@ -246,4 +267,5 @@
         width: 50px;
         height: 180px;
     }
+    
 }

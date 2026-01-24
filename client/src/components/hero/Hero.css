@@ -450,6 +450,7 @@
 
 @media (max-width: 1121px) {
     .hero-shape {
+        top: -130px;
         zoom: 1.8;
     }
 
